@@ -1,0 +1,44 @@
+.image-card {
+  height: 410px !important;
+  overflow: hidden;
+}
+
+.upload-img {
+  background-repeat: no-repeat;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+input[type=file]:focus {
+  outline: none !important;
+  border: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px var(--primary-color) !important;
+}
+
+input[type=text]:focus {
+  outline: none !important;
+  border: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px var(--primary-color) !important;
+}
+
+textarea:focus { 
+  outline: none !important;
+  border: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px var(--primary-color) !important;
+}
+
+select:focus {
+  outline: none !important;
+  border: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px var(--primary-color) !important;
+}
+
+.btn-yellow {
+  background-color: var(--primary-color) !important;
+  color: #FFFFFF !important;
+  border: none;
+}

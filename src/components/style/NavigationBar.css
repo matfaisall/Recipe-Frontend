@@ -1,0 +1,14 @@
+:root {
+  --primary-color: #EFC81A;
+}
+
+.link {
+  text-decoration: none;
+  color: gray;
+}
+
+.link:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+  font-weight: normal;
+}

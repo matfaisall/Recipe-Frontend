@@ -1,0 +1,7 @@
+.border-yellow {
+  border-bottom: 3px solid yellow !important;
+}
+
+.nav-link:hover {
+  font-weight: bold !important;
+}
