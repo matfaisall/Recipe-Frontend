@@ -12,7 +12,7 @@ const ListMenu = () => {
       <Row>
         <Col>
           <div className="d-flex gap-2">
-            <ul className="nav border-yellow">
+            <ul className="nav line-bottom">
               <li className="nav-item">
                 <Link to="#" className="nav-link active text-body-secondary">
                   Recipe
