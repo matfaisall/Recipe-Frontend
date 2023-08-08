@@ -9,8 +9,9 @@ import { useNavigate } from "react-router-dom";
 
 const AddRecipe = () => {
   const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJmYWlzYWwiLCJlbWFpbCI6ImZhaXNhbEBnbWFpbC5jb20iLCJwaG90byI6bnVsbCwiY3JlYXRlZF9hdCI6IjIwMjMtMDgtMDZUMDQ6Mzk6MTMuNTY2WiIsImlhdCI6MTY5MTMyNjAzMn0.xPNu8DTkV6L5SibJ3r7j_7eftq3kqbJoetZm5hHIbck";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJmYWlzYWwiLCJlbWFpbCI6ImZhaXNhbEBnbWFpbC5jb20iLCJwaG90byI6bnVsbCwiY3JlYXRlZF9hdCI6IjIwMjMtMDgtMDZUMDQ6Mzk6MTMuNTY2WiIsImlhdCI6MTY5MTQ0NzM1MX0.Boo21QZ-lWfVLISyhGtISxkxFIbIH3fZVPS-g4idiNE";
 
+  // console.log(process.env.REACT_APP_JWT_TOKEN);
   const navigate = useNavigate();
   const [photo, setPhoto] = useState(null);
   const [inputData, setInputData] = useState({

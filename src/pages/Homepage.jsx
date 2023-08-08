@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import NavigationBar from "../components/NavigationBar";
+import SearchBar from "../components/SearchBar";
 
 import { Container } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
+
 import Footer from "../components/Footer";
 
 // import data recipe popular
@@ -20,8 +20,11 @@ import MenuHero from "/images/menu-hero.jpg";
 
 // import component card
 import CardRecipe from "../components/CardRecipe";
+import SearchResult from "../components/SearchResult";
 
 const Homepage = () => {
+  const [result, setResult] = useState([]);
+  // console.log(result);
   return (
     <>
       <span className="bg-yellow"></span>
@@ -40,25 +43,10 @@ const Homepage = () => {
               </div>
               <Row>
                 <Col md={10}>
-                  <Form action="">
-                    <InputGroup className="mb-3">
-                      <InputGroup.Text
-                        id="inputGroup-sizing-default"
-                        className="border-0 bg-body-tertiary py-3"
-                      >
-                        <box-icon
-                          name="search"
-                          size="sm"
-                          color="gray"
-                        ></box-icon>
-                      </InputGroup.Text>
-                      <Form.Control
-                        aria-label="Default"
-                        aria-describedby="inputGroup-sizing-default"
-                        className="bg-body-tertiary border-0"
-                      />
-                    </InputGroup>
-                  </Form>
+                  {/* search input */}
+                  <SearchBar setResult={setResult} />
+                  <SearchResult result={result} />
+                  {/* end search input */}
                 </Col>
               </Row>
             </Col>
