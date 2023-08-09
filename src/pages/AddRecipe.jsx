@@ -3,15 +3,14 @@ import React, { useState } from "react";
 import { Row, Col, Container, Form, Card } from "react-bootstrap";
 import NavigationBar from "../components/NavigationBar";
 import ButtonSubmit from "../components/ButtonSubmit";
+import Swal from "sweetalert2";
 
 import "./style/AddRecipe.css";
 import { useNavigate } from "react-router-dom";
 
 const AddRecipe = () => {
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJmYWlzYWwiLCJlbWFpbCI6ImZhaXNhbEBnbWFpbC5jb20iLCJwaG90byI6bnVsbCwiY3JlYXRlZF9hdCI6IjIwMjMtMDgtMDZUMDQ6Mzk6MTMuNTY2WiIsImlhdCI6MTY5MTQ0NzM1MX0.Boo21QZ-lWfVLISyhGtISxkxFIbIH3fZVPS-g4idiNE";
+  const token = import.meta.env.VITE_JWT_TOKEN;
 
-  // console.log(process.env.REACT_APP_JWT_TOKEN);
   const navigate = useNavigate();
   const [photo, setPhoto] = useState(null);
   const [inputData, setInputData] = useState({
@@ -40,7 +39,14 @@ const AddRecipe = () => {
       })
       .then((res) => {
         console.log(res);
-        navigate("/");
+        navigate("/list-recipe");
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: res.data.message,
+          showConfirmButton: false,
+          timer: 2500,
+        });
       })
       .catch((err) => {
         console.log(err);

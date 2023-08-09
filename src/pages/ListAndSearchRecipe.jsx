@@ -7,12 +7,11 @@ import ListMenu from "../components/ListMenu";
 
 import { Col, Container, Row, Card, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ListAndSearchRecipe = () => {
   const [dataRecipe, setDataRecipe] = useState(null);
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJmYWlzYWwiLCJlbWFpbCI6ImZhaXNhbEBnbWFpbC5jb20iLCJwaG90byI6bnVsbCwiY3JlYXRlZF9hdCI6IjIwMjMtMDgtMDZUMDQ6Mzk6MTMuNTY2WiIsImlhdCI6MTY5MTQ0NzM1MX0.Boo21QZ-lWfVLISyhGtISxkxFIbIH3fZVPS-g4idiNE";
-
+  const token = import.meta.env.VITE_JWT_TOKEN;
   const getData = () => {
     axios
       .get("http://localhost:3000/recipe", {
@@ -30,7 +29,8 @@ const ListAndSearchRecipe = () => {
 
   useEffect(() => {
     getData();
-  });
+    console.log(import.meta.env.VITE_JWT_TOKEN);
+  }, []);
 
   const deleteData = (id) => {
     axios
@@ -42,6 +42,19 @@ const ListAndSearchRecipe = () => {
       .then((res) => {
         console.log(res);
         getData();
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire("Deleted!", res.data.message, "success");
+          }
+        });
       })
       .catch((err) => {
         console.log(err);

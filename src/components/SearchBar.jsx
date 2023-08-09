@@ -4,8 +4,7 @@ import "boxicons";
 
 import { Form, InputGroup } from "react-bootstrap";
 
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJmYWlzYWwiLCJlbWFpbCI6ImZhaXNhbEBnbWFpbC5jb20iLCJwaG90byI6bnVsbCwiY3JlYXRlZF9hdCI6IjIwMjMtMDgtMDZUMDQ6Mzk6MTMuNTY2WiIsImlhdCI6MTY5MTQ0NzM1MX0.Boo21QZ-lWfVLISyhGtISxkxFIbIH3fZVPS-g4idiNE";
+const token = import.meta.env.VITE_JWT_TOKEN;
 
 const SearchBar = ({ setResult }) => {
   const [input, setInput] = useState("");

@@ -3,14 +3,14 @@ import React, { useEffect, useState } from "react";
 import { Row, Col, Container, Form, Card } from "react-bootstrap";
 import NavigationBar from "../components/NavigationBar";
 import ButtonSubmit from "../components/ButtonSubmit";
+import Swal from "sweetalert2";
 
 import "./style/AddRecipe.css";
+import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 const EditRecipe = () => {
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJmYWlzYWwiLCJlbWFpbCI6ImZhaXNhbEBnbWFpbC5jb20iLCJwaG90byI6bnVsbCwiY3JlYXRlZF9hdCI6IjIwMjMtMDgtMDZUMDQ6Mzk6MTMuNTY2WiIsImlhdCI6MTY5MTQ0NzM1MX0.Boo21QZ-lWfVLISyhGtISxkxFIbIH3fZVPS-g4idiNE";
-
+  const token = import.meta.env.VITE_JWT_TOKEN;
   const { menuId } = useParams();
   const [photo, setPhoto] = useState(null);
   const [inputData, setInputData] = useState({
@@ -64,7 +64,14 @@ const EditRecipe = () => {
         },
       })
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: res.data.message,
+          showConfirmButton: false,
+          timer: 2500,
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -95,7 +102,7 @@ const EditRecipe = () => {
               <Form onSubmit={postData}>
                 <Card className="mb-4 image-card">
                   <img
-                    src=""
+                    src={inputData.photo_url}
                     id="frame"
                     alt="image"
                     className="img-fluid w-100 d-block mx-auto upload-img"
