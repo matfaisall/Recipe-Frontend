@@ -14,7 +14,7 @@ const ListAndSearchRecipe = () => {
   const token = import.meta.env.VITE_JWT_TOKEN;
   const getData = () => {
     axios
-      .get("http://localhost:3000/recipe", {
+      .get("http://localhost:4000/recipe", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -88,7 +88,7 @@ const ListAndSearchRecipe = () => {
                   <Row className="g-0">
                     <Col md={5}>
                       <img
-                        src={item.photo}
+                        src={item.image}
                         alt={item.title}
                         className="img-fluid rounded d-flex align-items-center w-100"
                       />

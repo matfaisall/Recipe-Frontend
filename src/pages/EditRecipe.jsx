@@ -12,12 +12,12 @@ import { useParams } from "react-router-dom";
 const EditRecipe = () => {
   const token = import.meta.env.VITE_JWT_TOKEN;
   const { menuId } = useParams();
-  const [photo, setPhoto] = useState(null);
+  const [image, setImage] = useState(null);
   const [inputData, setInputData] = useState({
     title: "",
     ingredients: "",
     category_id: "1",
-    photo_url: "",
+    image_url: "",
   });
 
   const getData = () => {
@@ -33,7 +33,7 @@ const EditRecipe = () => {
           ...inputData,
           title: res.data.data.title,
           ingredients: res.data.data.ingredients,
-          photo_url: res.data.data.photo,
+          image_url: res.data.data.photo,
         });
       })
       .catch((err) => {
@@ -52,7 +52,7 @@ const EditRecipe = () => {
     bodyFormData.append("title", inputData.title);
     bodyFormData.append("ingredients", inputData.ingredients);
     bodyFormData.append("category_id", inputData.category_id);
-    bodyFormData.append("photo", photo);
+    bodyFormData.append("photo", image);
 
     console.log(bodyFormData);
 
@@ -83,11 +83,11 @@ const EditRecipe = () => {
     console.log(inputData);
   };
   const onChangePhoto = (e) => {
-    setPhoto(e.target.files[0]);
+    setImage(e.target.files[0]);
     e.target.files[0] &&
       setInputData({
         ...inputData,
-        photo_url: URL.createObjectURL(e.target.files[0]),
+        image_url: URL.createObjectURL(e.target.files[0]),
       });
     console.log(e.target.files);
   };
@@ -102,7 +102,7 @@ const EditRecipe = () => {
               <Form onSubmit={postData}>
                 <Card className="mb-4 image-card">
                   <img
-                    src={inputData.photo_url}
+                    src={inputData.image_url}
                     id="frame"
                     alt="image"
                     className="img-fluid w-100 d-block mx-auto upload-img"
